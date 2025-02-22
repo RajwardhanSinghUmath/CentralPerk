@@ -1,0 +1,48 @@
+/* Friends-Themed Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6b4226; /* Central Perk Coffee Brown */
+    padding: 12px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Logo */
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 50px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .logo:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #f4e7d1; /* Light beige for contrast */
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    color: #ffcc00; /* Friendly yellow */
+  }
+  

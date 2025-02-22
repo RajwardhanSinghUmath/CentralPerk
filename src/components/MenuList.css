@@ -1,0 +1,255 @@
+/* Central Perk Theme Colors */
+:root {
+  --background-color: #f4e7d1; /* Beige Coffee-like Background */
+  --border-color: #6b4226; /* Coffee Brown */
+  --text-color: #333;
+  --highlight-color: #a63d40; /* Warm Coffee Red */
+  --category-bg: #4a5759; /* Muted Greenish-Grey */
+  --input-bg: #fff8f0; /* Soft Beige */
+}
+
+/* Main Container */
+.menu-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background: var(--background-color);
+  border-radius: 12px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Search Input */
+.menu-search {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  outline: none;
+  transition: 0.3s;
+}
+
+.menu-search:focus {
+  border-color: var(--highlight-color);
+}
+
+/* Dropdown Select */
+.menu-filter {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  outline: none;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.menu-filter:hover {
+  border-color: var(--highlight-color);
+}
+
+/* Menu Items Grid */
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* Individual Menu Card */
+.menu-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  max-width: 200px;
+}
+
+.menu-card:hover {
+  transform: scale(1.05);
+}
+
+/* Menu Item Image */
+.menu-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Favorite & Cart Buttons */
+.favorite-btn, .cart-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+  border: none;
+}
+
+.favorite-btn {
+  background: transparent;
+  color: var(--highlight-color);
+  font-size: 1.2rem;
+  border: 2px solid transparent;
+}
+
+.favorite-btn:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+.favorite-btn.fav {
+  color: red;
+}
+
+.cart-btn {
+  background: var(--highlight-color);
+  color: white;
+  font-size: 0.9rem;
+  border: 2px solid var(--highlight-color);
+}
+
+.cart-btn:hover {
+  background: white;
+  color: var(--highlight-color);
+}
+
+/* No Items Found */
+.menu-no-items {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+}
+
+/* Favorites & Cart Containers */
+.favorites-container, .cart-container {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cart Items */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.cart-item button {
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 3px;
+}
+/* Central Perk Theme Colors */
+:root {
+  --background-color: #f4e7d1;
+  --border-color: #6b4226;
+  --text-color: #333;
+  --highlight-color: #a63d40;
+  --category-bg: #4a5759;
+  --input-bg: #fff8f0;
+}
+
+/* Main Container */
+.menu-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background: var(--background-color);
+  border-radius: 12px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Search Input */
+.menu-search,
+.menu-filter {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  outline: none;
+  transition: 0.3s;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* Menu Items Grid */
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* No items message */
+.menu-no-items {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+}
+
+/* Favorite and Cart Sections */
+.favorites-section,
+.cart-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.favorites-section h2,
+.cart-section h2 {
+  color: var(--highlight-color);
+}
+
+.favorites-section ul,
+.cart-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.favorites-section li,
+.cart-section li {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.favorites-section button,
+.cart-section button {
+  background: var(--highlight-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.favorites-section button:hover,
+.cart-section button:hover {
+  background: white;
+  color: var(--highlight-color);
+  border: 1px solid var(--highlight-color);
+}
