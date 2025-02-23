@@ -1,48 +1,85 @@
-/* Friends-Themed Navbar Styles */
+/* Light Theme (Default) */
 .navbar {
-    display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85); /* Slightly more transparent */
+  backdrop-filter: blur(10px); /* Glass effect */
+  padding: 10px 0; /* Reduced thickness */
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  height: 55px; /* Reduced height */
+}
+
+.navbar a,
+.navbar Link {
+  color: #5d4037;
+  text-decoration: none;
+  padding: 8px 15px; /* Adjusted padding */
+  font-size: 16px; /* Slightly smaller text */
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar Link:hover {
+  color: #3e2723;
+  transform: scale(1.08);
+}
+
+.navbar img {
+  height: 40px; /* Reduced logo size */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Dark Theme */
+.navbar.dark-theme {
+  background: rgba(0, 0, 0, 0.85); /* Dark background */
+  color: #ffffff;
+}
+
+.navbar.dark-theme a,
+.navbar.dark-theme Link {
+  color: #ffffff;
+}
+
+.navbar.dark-theme a:hover,
+.navbar.dark-theme Link:hover {
+  color: #f0f0f0;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    background-color: #6b4226; /* Central Perk Coffee Brown */
-    padding: 12px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 8px 15px;
   }
-  
-  /* Logo */
-  .logo-container {
-    display: flex;
-    align-items: center;
+  .navbar img {
+    height: 35px; /* Smaller logo on mobile */
   }
-  
-  .logo {
-    height: 50px;
-    transition: transform 0.3s ease-in-out;
+  .navbar a {
+    font-size: 14px;
+    padding: 6px 12px;
   }
-  
-  .logo:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Navigation Links */
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-links li {
-    display: inline;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: #f4e7d1; /* Light beige for contrast */
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .nav-links a:hover {
-    color: #ffcc00; /* Friendly yellow */
-  }
-  
+}

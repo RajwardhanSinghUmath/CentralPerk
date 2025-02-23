@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./CustomerReviews.css";
+import Navbar from "./Navbar";
 
 const initialReviews = [
   { id: 1, name: "John Doe", rating: 5, review: "Amazing service! Highly recommend.", date: new Date(2024, 1, 1) },
@@ -36,51 +37,55 @@ const CustomerReviews = () => {
   const sortedReviews = [...reviews].sort((a, b) => {
     if (sortBy === "newest") return b.date - a.date;
     if (sortBy === "highest") return b.rating - a.rating;
+    return 0;
   });
 
   return (
-    <div className="reviews-container">
-      <h2 className="reviews-title">Customer Reviews</h2>
+    <div className="customer-reviews-page">
+      <Navbar />
+      <div className="reviews-container">
+        <h2 className="reviews-title">Customer Reviews</h2>
 
-      {/* Sort Dropdown */}
-      <select className="sort-dropdown" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-        <option value="newest">Newest First</option>
-        <option value="highest">Highest Rated</option>
-      </select>
+        {/* Sort Dropdown */}
+        <select className="sort-dropdown" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="newest">Newest First</option>
+          <option value="highest">Highest Rated</option>
+        </select>
 
-      {/* Reviews List */}
-      <div className="reviews-list">
-        {sortedReviews.map((rev) => (
-          <div key={rev.id} className="review-card">
-            <p className="review-name">{rev.name}</p>
-            <p className="review-rating">{"⭐".repeat(rev.rating)}</p>
-            <p className="review-text">{rev.review}</p>
-            <p className="review-date">{rev.date.toDateString()}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Add Review Form */}
-      <div className="review-form">
-        <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <textarea placeholder="Write your review..." value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
-        
-        {/* Star Rating Selection */}
-        <div className="star-rating">
-          {[1, 2, 3, 4, 5].map((num) => (
-            <span 
-              key={num} 
-              className={`star ${rating >= num || hoverRating >= num ? "selected" : ""}`} 
-              onClick={() => setRating(num)}
-              onMouseEnter={() => setHoverRating(num)}
-              onMouseLeave={() => setHoverRating(0)}
-            >
-              ⭐
-            </span>
+        {/* Reviews List */}
+        <div className="reviews-list">
+          {sortedReviews.map((rev) => (
+            <div key={rev.id} className="review-card">
+              <p className="review-name">{rev.name}</p>
+              <p className="review-rating">{"⭐".repeat(rev.rating)}</p>
+              <p className="review-text">{rev.review}</p>
+              <p className="review-date">{new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(rev.date)}</p>
+            </div>
           ))}
         </div>
 
-        <button className="submit-btn" onClick={handleAddReview}>Submit Review</button>
+        {/* Add Review Form */}
+        <div className="review-form">
+          <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <textarea placeholder="Write your review..." value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
+          
+          <div className="star-rating">
+  {[1, 2, 3, 4, 5].map((num) => (
+    <span
+      key={num}
+      className={`star ${rating >= num || hoverRating >= num ? "selected" : ""}`}
+      onClick={() => setRating(num)}
+      onMouseEnter={() => setHoverRating(num)}
+      onMouseLeave={() => setHoverRating(0)}
+      aria-label={`Rate ${num} out of 5`}
+    >
+      ⭐
+    </span>
+  ))}
+</div>
+
+          <button className="submit-btn" onClick={handleAddReview}>Submit Review</button>
+        </div>
       </div>
     </div>
   );

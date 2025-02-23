@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Seating.css';
+import Navbar from './Navbar';
 
 const Seating = () => {
   const [activeFilters, setActiveFilters] = useState([]);
@@ -343,6 +344,7 @@ const Seating = () => {
 
   return (
     <div className="seating-chart">
+      <Navbar />
       <header className="chart-header">
         <h1>☕ Central Perk Seating Chart</h1>
         <div className="filter-container">

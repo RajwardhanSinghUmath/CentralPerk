@@ -1,12 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./VirtualBarista.css";
+import Navbar from "./Navbar";
 
 const coffeeList = [
-  { name: "Espresso", price: "$3", image: "https://via.placeholder.com/100" },
-  { name: "Cappuccino", price: "$4", image: "https://via.placeholder.com/100" },
-  { name: "Latte", price: "$4.5", image: "https://via.placeholder.com/100" },
-  { name: "Mocha", price: "$5", image: "https://via.placeholder.com/100" },
-  { name: "Americano", price: "$3.5", image: "https://via.placeholder.com/100" }
+  { name: "Espresso", price: "$3" },
+  { name: "Cappuccino", price: "$4" },
+  { name: "Latte", price: "$4.5" },
+  { name: "Mocha", price: "$5" },
+  { name: "Americano", price: "$3.5" }
 ];
 
 const VirtualBarista = () => {
@@ -18,9 +19,8 @@ const VirtualBarista = () => {
   const [noMoreLeft, setNoMoreLeft] = useState(false);
   const [stage, setStage] = useState("suggest");
 
-  const chatBoxRef = useRef(null); // Ref for the chat box
+  const chatBoxRef = useRef(null);
 
-  // Auto-scroll to the bottom when messages change
   useEffect(() => {
     if (chatBoxRef.current) {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
@@ -60,7 +60,7 @@ const VirtualBarista = () => {
       addMessage(`Great choice! Your ${currentSuggestion.name} is being prepared. ☕`, "bot");
       setTimeout(() => addMessage("Please select a payment method: Cash, Card, or Online", "bot"), 1000);
       setStage("payment");
-    } else if (stage === "payment") {
+    } else if (stage === "payment" && ["Cash", "Card", "Online"].includes(response)) {
       addMessage(`Payment confirmed via ${response}. Your ${currentSuggestion.name} will be ready soon! ✅`, "bot");
       setTimeout(() => {
         addMessage("Would you like to order more? Press 'Order More' to continue or 'Exit' to end.", "bot");
@@ -70,6 +70,7 @@ const VirtualBarista = () => {
     } else if (response === "Reset") {
       setSuggested([]);
       setNoMoreLeft(false);
+      setStage("suggest");
       suggestCoffee();
     } else if (response === "Order More") {
       setStage("suggest");
@@ -81,34 +82,38 @@ const VirtualBarista = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-box" ref={chatBoxRef}>
-        {messages.map((msg, index) => (
-          <div key={index} className={`chat-message ${msg.sender}-message`}>
-            {msg.text}
-          </div>
-        ))}
-      </div>
-      <div className="input-container">
-        {stage === "suggest" || stage === "confirm" ? (
-          <>
-            <button onClick={() => handleUserResponse("Next")}>Next</button>
-            <button onClick={() => handleUserResponse("Yes")} disabled={stage !== "confirm"}>Yes</button>
-          </>
-        ) : stage === "payment" ? (
-          <>
-            <button onClick={() => handleUserResponse("Cash")}>Cash</button>
-            <button onClick={() => handleUserResponse("Card")}>Card</button>
-            <button onClick={() => handleUserResponse("Online")}>Online</button>
-          </>
-        ) : stage === "orderMore" ? (
-          <>
-            <button onClick={() => handleUserResponse("Order More")}>Order More</button>
-            <button onClick={() => handleUserResponse("Exit")}>Exit</button>
-          </>
-        ) : noMoreLeft ? (
-          <button onClick={() => handleUserResponse("Reset")}>Reset</button>
-        ) : null}
+    <div className="virtual-barista-page">
+      <Navbar />
+      <p className="outerquote" >“They don’t know that we know they know we know.”</p>
+      <div className="chat-container">
+        <div className="chat-box" ref={chatBoxRef}>
+          {messages.map((msg, index) => (
+            <div key={index} className={`chat-message ${msg.sender}-message`}>
+              {msg.text}
+            </div>
+          ))}
+        </div>
+        <div className="input-container">
+          {stage === "suggest" || stage === "confirm" ? (
+            <>
+              <button onClick={() => handleUserResponse("Next")}>Next</button>
+              <button onClick={() => handleUserResponse("Yes")} disabled={stage !== "confirm"}>Yes</button>
+            </>
+          ) : stage === "payment" ? (
+            <>
+              <button onClick={() => handleUserResponse("Cash")}>Cash</button>
+              <button onClick={() => handleUserResponse("Card")}>Card</button>
+              <button onClick={() => handleUserResponse("Online")}>Online</button>
+            </>
+          ) : stage === "orderMore" ? (
+            <>
+              <button onClick={() => handleUserResponse("Order More")}>Order More</button>
+              <button onClick={() => handleUserResponse("Exit")}>Exit</button>
+            </>
+          ) : noMoreLeft ? (
+            <button onClick={() => handleUserResponse("Reset")}>Reset</button>
+          ) : null}
+        </div>
       </div>
     </div>
   );
